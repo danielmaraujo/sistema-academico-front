@@ -1,27 +1,32 @@
-import Vue from 'vue'; // Import Vue
-import VueRouter from 'vue-router'; // Import Vue Router
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 
 import App from './App.vue';
 import StartPage from './components/StartPage.vue';
 import StudentList from './components/StudentList.vue';
+import SubjectList from './components/SubjectList.vue';
+import CourseList from './components/CourseList.vue';
+import ProfessorList from './components/ProfessorList.vue';
 
 import vuetify from './plugins/vuetify';
 import 'vuetify/dist/vuetify.min.css';
 
-// Use Vue Router
 Vue.use(VueRouter);
 
-// Create the Vue 2 app instance
 const app = new Vue({
-  el: '#app', // This specifies the HTML element with the id "app" to mount the app
+  el: '#app',
   render: (h) => h(App),
   router: new VueRouter({
     routes: [
       { path: '/', component: StartPage },
-      { path: '/students', component: StudentList },
+      { path: '/alunos', component: StudentList },
+      { path: '/disciplinas', component: SubjectList },
+      { path: '/cursos', component: CourseList },
+      { path: '/professores', component: ProfessorList },
     ],
-    mode: 'history', // Use history mode for routing
+    mode: 'history',
   }),
   vuetify,
 });
 
+export default app;
