@@ -6,8 +6,8 @@
           <v-form @submit.prevent="createSubject">
             <v-text-field v-model="newSubject.name" label="Nome" required></v-text-field>
             <v-text-field v-model="newSubject.courseLoad" label="Carga Horária" type="number" required></v-text-field>
-            <v-text-field v-model="newSubject.professorId" label="Professor" required></v-text-field>
-            <v-text-field v-model="newSubject.courseId" label="Curso" required></v-text-field>
+            <v-text-field v-model="newSubject.professor" label="Professor" required></v-text-field>
+            <v-text-field v-model="newSubject.course" label="Curso" required></v-text-field>
             <v-btn type="submit" color="primary">Criar Disciplina</v-btn>
           </v-form>
         </v-card-text>
