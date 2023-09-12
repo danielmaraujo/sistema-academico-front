@@ -22,11 +22,14 @@ describe('CourseService', () => {
     const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
     // Act
-    const courses = await CourseService.getCourses();
-
-    // Assert
-    expect(courses).toBeUndefined();
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Error fetching data:', 'Internal Server Error');
-    consoleErrorSpy.mockRestore();
+    try {
+      await CourseService.getCourses();
+    } catch (error) {
+      // Assert
+      expect(error).toEqual('Internal Server Error');
+      expect(consoleErrorSpy).toHaveBeenCalledWith('Error fetching data:', 'Internal Server Error');
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
   });
 });

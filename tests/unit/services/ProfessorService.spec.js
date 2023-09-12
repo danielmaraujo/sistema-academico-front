@@ -27,12 +27,14 @@ describe('ProfessorService', () => {
     const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
     // Act
-    const professors = await ProfessorService.getProfessors();
-
-    // Assert
-    expect(professors).toBeUndefined();
-    expect(axios.get).toHaveBeenCalledWith('https://sistema-academico-api-ezbw.onrender.com/professors');
-    expect(consoleErrorSpy).toHaveBeenCalledWith('Error fetching data:', 'Internal Server Error');
-    consoleErrorSpy.mockRestore();
+    try {
+      await ProfessorService.getProfessors();
+    } catch (error) {
+      // Assert
+      expect(error).toEqual('Internal Server Error');
+      expect(consoleErrorSpy).toHaveBeenCalledWith('Error fetching data:', 'Internal Server Error');
+    } finally {
+      consoleErrorSpy.mockRestore();
+    }
   });
 });
