@@ -28,8 +28,8 @@ describe('SubjectForm.vue', () => {
       newSubject: {
         name: 'Test Subject',
         courseLoad: 3,
-        professor: 'Test Professor',
-        course: 'Test Course',
+        professorId: 'Test Professor',
+        courseId: 'Test Course',
       },
     });
 
@@ -39,16 +39,16 @@ describe('SubjectForm.vue', () => {
     expect(require('@/services/SubjectService').createSubject).toHaveBeenCalledWith({
       name: 'Test Subject',
       courseLoad: 3,
-      professor: 'Test Professor',
-      course: 'Test Course',
+      professorId: 'Test Professor',
+      courseId: 'Test Course',
     });
 
     expect(wrapper.emitted('subjectCreated')).toBeTruthy();
     expect(wrapper.emitted('subjectCreated')[0][0]).toEqual({
       name: 'Test Subject',
       courseLoad: 3,
-      professor: 'Test Professor',
-      course: 'Test Course',
+      professorId: 'Test Professor',
+      courseId: 'Test Course',
     });
   });
 });
